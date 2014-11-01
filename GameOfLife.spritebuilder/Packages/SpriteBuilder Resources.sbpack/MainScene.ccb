@@ -1591,8 +1591,6 @@
 										</array>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 							</dict>
 							<dict>
 								<key>UUID</key>
@@ -1732,7 +1730,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>GameOfLifeAssets/Buttons/pause.png</string>
+											<string>GameOfLifeAssets/Buttons/play-pressed.png</string>
 										</array>
 									</dict>
 									<dict>
