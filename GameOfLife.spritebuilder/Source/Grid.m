@@ -86,4 +86,62 @@ static const int GRID_COLUMNS = 10;
     
 }
 
+- (void) evolveStep
+{
+    // update each Creature's neighobor count
+    [self countNeighbors];
+    
+    //update each Creature's current state
+    [self updateCreatures];
+    
+    //update the generation label, so it shows the correct generation
+    _generation++;
+}
+
+- (void) countNeighbors
+{
+    // iterate through the rows
+    // NSArray has a method 'count' that will return the number of elements in the array
+    for (int i= 0; i < [_gridArray count]; i++)
+    {
+        //iterate through columns
+        for (int j=0; j < [_gridArray[i] count]; j++)
+        {
+            Creature *currentCreature = _gridArray[i][j];
+            int neighborCount = 0;
+            // now we calculate how many neighbors are alive
+            // first go through the neighborhood rows
+            for (int x=(i-1); x<=(i+1); x++) {
+                for (int y=(j-1); j<=(j+1); y++) {
+                    BOOL isIndexValid = [self isIndexValid:x andY:y];
+                    
+                    // if its valid and on-screen + its not the creature itself
+                    if (isIndexValid
+                        && !(x==i && y==j) )
+                    {
+                        Creature *neighborCreature = _gridArray[x][y];
+                        if ([neighborCreature isAlive]) {
+                            neighborCreature.livingNeighbors++;
+                        }
+                    }
+                }
+            }
+            currentCreature.livingNeighbors = neighborCount;
+        }
+        
+    }
+
+}
+
+- (BOOL) isIndexValid:(NSInteger)x andY:(NSInteger)y
+{
+    if (x<=0
+        || y<=0
+        || x>= GRID_ROWS
+        || y>= GRID_COLUMNS)
+        return FALSE;
+    else
+        return TRUE;
+}
+
 @end
