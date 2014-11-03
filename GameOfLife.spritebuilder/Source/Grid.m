@@ -65,4 +65,25 @@ static const int GRID_COLUMNS = 10;
     }
 }
 
+- (void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    // get x,y co-ordinates of the touch
+    CGPoint touchLocation = [touch locationInNode:self];
+    
+    // get the creature at that point
+    Creature *creature = [self creatureForTouchPosition:touchLocation];
+    
+    //invert its state
+    creature.isAlive = !creature.isAlive;
+}
+
+- (Creature *)creatureForTouchPosition:(CGPoint)touchPosition
+{
+    //get the row and column that was touched, return the Creature inside the corresponding cell
+    int x_location = touchPosition.x/_cellWidth;
+    int y_location = touchPosition.y/_cellHeight;
+    return _gridArray[x_location][y_location];
+    
+}
+
 @end
