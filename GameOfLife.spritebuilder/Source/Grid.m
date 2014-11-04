@@ -112,7 +112,7 @@ static const int GRID_COLUMNS = 10;
             // now we calculate how many neighbors are alive
             // first go through the neighborhood rows
             for (int x=(i-1); x<=(i+1); x++) {
-                for (int y=(j-1); j<=(j+1); y++) {
+                for (int y=(j-1); y<=(j+1); y++) {
                     BOOL isIndexValid = [self isIndexValid:x andY:y];
                     
                     // if its valid and on-screen + its not the creature itself
