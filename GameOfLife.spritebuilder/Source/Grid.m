@@ -169,6 +169,8 @@ static const int GRID_COLUMNS = 10;
             }
             else if (currentCreature.isAlive)
             {
+                NSString *currneighbors = [NSString stringWithFormat:@"%ld", (long)[currentCreature livingNeighbors]];
+                printf("%s",[currneighbors cStringUsingEncoding:NSUTF8StringEncoding]);
                 _totalAlive++;
             }
 
