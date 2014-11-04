@@ -88,6 +88,9 @@ static const int GRID_COLUMNS = 10;
 
 - (void) evolveStep
 {
+    //reset the totalAlive counter every time we enter the update routine
+    _totalAlive = 0;
+
     // update each Creature's neighobor count
     [self countNeighbors];
     
@@ -162,6 +165,7 @@ static const int GRID_COLUMNS = 10;
             else if ([currentCreature livingNeighbors] == 3)
             {
                 currentCreature.isAlive = TRUE;
+                _totalAlive++;
             }
 
         }
