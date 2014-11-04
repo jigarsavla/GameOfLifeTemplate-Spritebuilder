@@ -135,8 +135,8 @@ static const int GRID_COLUMNS = 10;
 
 - (BOOL) isIndexValid:(NSInteger)x andY:(NSInteger)y
 {
-    if (x<=0
-        || y<=0
+    if (x<0
+        || y<0
         || x>= GRID_ROWS
         || y>= GRID_COLUMNS)
         return FALSE;
