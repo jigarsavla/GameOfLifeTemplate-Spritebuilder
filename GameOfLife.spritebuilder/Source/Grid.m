@@ -167,6 +167,10 @@ static const int GRID_COLUMNS = 10;
                 currentCreature.isAlive = TRUE;
                 _totalAlive++;
             }
+            else if (currentCreature.isAlive)
+            {
+                _totalAlive++;
+            }
 
         }
     }
